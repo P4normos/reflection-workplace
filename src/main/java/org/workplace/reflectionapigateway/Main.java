@@ -1,6 +1,5 @@
 package org.workplace.reflectionapigateway;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,7 +11,7 @@ public class Main {
         Class<?> hashMapClass = mapObject.getClass();
         Class<?> squareClass = Class.forName("org.workplace.reflectionapigateway.Main$Square");
 
-        //printClassInfo(stringClass, hashMapClass, squareClass);
+        printClassInfo(stringClass, hashMapClass, squareClass);
 
         var circleObject = new Drawable(){
             @Override
@@ -21,7 +20,7 @@ public class Main {
             }
         };
 
-        printClassInfo(Collection.class, boolean.class, int[][].class, Color.class, circleObject.getClass());
+        //printClassInfo(Collection.class, boolean.class, int[][].class, Color.class, circleObject.getClass());
     }
 
     private static void printClassInfo(Class<?> ... classes){
