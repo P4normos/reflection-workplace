@@ -1,6 +1,9 @@
 package org.workplace.fields_and_arrays.arrays_init;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class Main {
 
@@ -10,6 +13,7 @@ public class Main {
         double[][][] threeDimensionalArray = { {{1.5, 2.5} } , {{3.5, 4.5} } };
         inspectArrayObject(threeDimensionalArray);
         inspectArrayValues(threeDimensionalArray);
+
     }
 
     private static void inspectArrayValues(Object arrayObject){
