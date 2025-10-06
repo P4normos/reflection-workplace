@@ -4,6 +4,7 @@ import org.workplace.fields_and_arrays.configloader.data.GameConfig;
 import org.workplace.fields_and_arrays.configloader.data.UserInterfaceConfig;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -41,16 +42,32 @@ public class Main {
             try {
                 field = clazz.getDeclaredField(propertyName);
             } catch (NoSuchFieldException e) {
-                System.out.println(String.format("Property name : %s is unsupported",propertyName));
+                System.out.printf("Property name : %s is unsupported%n",propertyName);
                 continue;
             }
             field.setAccessible(true);
 
-            Object parsedValue = parseValue(field.getType(),propertyValue);
+            Object parsedValue;
+            if(field.getType().isArray()){
+                parsedValue = parseArray(field.getType().getComponentType(), propertyValue);
+            }else{
+                parsedValue = parseValue(field.getType(), propertyValue);
+            }
+
             field.set(configInstance, parsedValue);
         }
 
         return configInstance;
+    }
+
+    private static Object parseArray(Class<?> arrayElementType, String value){
+        String[] elementValues = value.split(",");
+        Object arrayObject = Array.newInstance(arrayElementType, elementValues.length);
+
+        for(int i = 0 ; i<elementValues.length; i++){
+            Array.set(arrayObject, i, parseValue(arrayElementType,elementValues[i]));
+        }
+        return arrayObject;
     }
 
     private static Object parseValue(Class<?> type, String value) {

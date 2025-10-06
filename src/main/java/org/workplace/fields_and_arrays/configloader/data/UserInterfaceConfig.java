@@ -24,11 +24,15 @@
 
 package org.workplace.fields_and_arrays.configloader.data;
 
+import java.util.Arrays;
+
 public class UserInterfaceConfig {
     private String titleColor;
     private String footerText;
     private short titleFontSize;
     private short footerFontSize;
+    private short[] titleTextSizes;
+    private String[] titleFonts;
 
     public String getTitleColor() {
         return titleColor;
@@ -46,6 +50,10 @@ public class UserInterfaceConfig {
         return footerFontSize;
     }
 
+    public short[] getTitleTextSizes(){ return titleTextSizes; }
+
+    public String[] getTitleFonts(){ return titleFonts; }
+
     @Override
     public String toString() {
         return "UserInterfaceConfig{" +
@@ -53,6 +61,8 @@ public class UserInterfaceConfig {
                 ", footerText='" + footerText + '\'' +
                 ", titleFontSize=" + titleFontSize +
                 ", footerFontSize=" + footerFontSize +
+                ", titleTextSizes="+ Arrays.toString(titleTextSizes) +
+                ", titleFonts=" + Arrays.toString(titleFonts) +
                 '}';
     }
 }

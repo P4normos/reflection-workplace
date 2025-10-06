@@ -24,6 +24,7 @@
 
 package org.workplace.fields_and_arrays.configloader.data;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class GameConfig {
@@ -33,6 +34,7 @@ public class GameConfig {
     //private static final int releaseYear = 2000;
     private String gameName;
     private double price;
+    private String[] characterNames;
 
 //    public GameConfig(){
 //        Random random = new Random();
@@ -57,6 +59,7 @@ public class GameConfig {
                 "releaseYear=" + releaseYear +
                 ", gameName='" + gameName + '\'' +
                 ", price=" + price +
+                ", characterNames=" + Arrays.toString(characterNames) +
                 '}';
     }
 }
